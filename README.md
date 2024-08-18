@@ -37,6 +37,11 @@ PHP, Laravel, MySQL, BootStrap, HTML, CSS
 - cast: varchar
 - imagepath: varchar
 
+### Collaborators :
+- Akash Sharma
+- Navaneeth
+- Saran 
+
 ## Screenshots Of the application
 ![Screenshot 2024-08-18 125707](https://github.com/user-attachments/assets/5e5d2df2-1fbc-497e-aa19-0db231639f2e)
 
