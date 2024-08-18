@@ -1,5 +1,6 @@
     @extends('layouts/admin')
     @section('content')
+    @if(auth()->user()->isAdmin())
         <div class="row">
             <div class="col">
                 <h1 class="display-2">
@@ -19,10 +20,7 @@
                     </div>
                 @endif
                 {{ csrf_field() }}
-                <div class="mb-3">
-                    <label for="movieId" class="form-label">Movie Id</label>
-                    <input type="text" class="form-control" id="movieId" name="movieId" aria-describedby="movieId" required>
-                </div>    
+                 
                 <div class="mb-3">
                     <label for="movieName" class="form-label">Movie Name</label>
                     <input type="text" class="form-control" id="movieName" name="movieName" aria-describedby="movieName" required>
@@ -50,7 +48,7 @@
                 </div>
                 
                 <div class="mb-3">
-                    <label for="imagepath" class="form-label">Movie Cover Image</label>
+                    <label for="imagepath" class="form-label">Movie Cover Image URL</label>
                     <input type="text" class="form-control" id="imagepath" name="imagepath"  aria-describedby="imagepath" required>
             
                 </div>
@@ -58,4 +56,5 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
+        @endif
     @endsection

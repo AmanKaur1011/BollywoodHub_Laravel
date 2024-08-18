@@ -58,7 +58,7 @@
                 <input type="text" class="form-control" id="videoId" name="videoId" value="{{$song->videoId}}">
             </div>
             <div class="mb-3">
-                <label for="imagePath" class="form-label">Song Image</label>
+                <label for="imagePath" class="form-label">Song Image URL</label>
                 <input type="text" class="form-control" id="imagePath" name="imagePath" value="{{$song->imagePath}}"  required>
             </div>
             <button type="submit" class="btn btn-success mb-3"> Edit Song</button>

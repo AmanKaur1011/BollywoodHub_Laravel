@@ -1,45 +1,32 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use app\Models\Movie;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SongController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get(
-    'movies/trash/{id}',
-    [MovieController::class, 'trash']
-)->name('movies.trash');
-
-Route::get(
-'movies/trashed/',
-[MovieController::class, 'trashed']
-)->name('movies.trashed');
-
-Route::get(
-'movies/restore/{id}',
-[MovieController::class, 'trash']
-)->name('movies.restore');
 
 
-Route::resource('movies', MovieController::class);
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::get(
-    'songs/trash/{id}',
-    [SongController::class, 'trash']
-)->name('songs.trash');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('movies', MovieController::class);
+    Route::resource('songs', SongController::class);
+});
 
-Route::get(
-'songs/trashed/',
-[SongController::class, 'trashed']
-)->name('songs.trashed');
-
-Route::get(
-'songs/restore/{id}',
-[SongController::class, 'restore']
-)->name('songs.restore');
+require __DIR__.'/auth.php';
 
 
-Route::resource('songs', SongController::class);
+
+
+

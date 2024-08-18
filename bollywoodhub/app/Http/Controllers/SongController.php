@@ -44,7 +44,7 @@ class SongController extends Controller
 
     // Flash success message and redirect
     Session::flash('success', 'Song added successfully');
-    return redirect()->route('songs.index');
+    return redirect()->route('dashboard');
     }
 
     /**
@@ -84,39 +84,19 @@ class SongController extends Controller
     
         // Flash success message and redirect
         Session::flash('success', 'Song updated successfully');
-        return redirect()->route('songs.index');
+        return redirect()->route('dashboard');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function  trashed()
-    {
-         return view('songs.trashed',[
-        'songs' => Song::onlyTrashed()->get()// equivalent to select * from students 
-        ]);
-    }
-    public function destroy($id)
+    
+    
+    public function destroy(Song $song)
 {
-    $song = Song::withTrashed()->where('id', $id)->firstOrFail(); // Fetch the song including soft-deleted ones
     $song->forceDelete(); // Permanently delete the song
     Session::flash('success', 'Song deleted successfully'); // Flash success message
-    return redirect()->route('songs.index'); // Redirect to songs index
-}
-public function trash($id)
-{
-    $song = Song::findOrFail($id); // Fetch the song or fail if not found
-    $song->delete(); // Soft delete the song
-    Session::flash('success', 'Song trashed successfully'); // Flash success message
-    return redirect()->route('songs.index'); // Redirect to songs index
+    return redirect()->route('dashboard'); // Redirect to songs index
 }
 
-public function restore($id)
-{
-    $song = Song::withTrashed()->where('id', $id)->firstOrFail(); // Fetch the song including soft-deleted ones
-    $song->restore(); // Restore the soft-deleted song
-    Session::flash('success', 'Song restored successfully'); // Flash success message
-    return redirect()->route('songs.trashed'); // Redirect to trashed songs list
-}
+
+
 
 }

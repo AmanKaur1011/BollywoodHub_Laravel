@@ -21,10 +21,7 @@
             @method('PUT')
             {{ csrf_field() }}
            
-            <div class="mb-3">
-                <label for="movieId" class="form-label">Movie Id</label>
-                <input type="text" class="form-control" id="movieId" name="movieId" aria-describedby="movieId" value="{{$movie->movieId}}" required>
-            </div>    
+             
             <div class="mb-3">
                 <label for="movieName" class="form-label">Movie Name</label>
                 <input type="text" class="form-control" id="movieName" name="movieName" aria-describedby="movieName" value="{{$movie->movieName}}" required>
@@ -52,7 +49,7 @@
             </div>
             
             <div class="mb-3">
-                <label for="imagepath" class="form-label">Movie Cover Image</label>
+                <label for="imagepath" class="form-label">Movie Cover Image URL</label>
                 <input type="text" class="form-control" id="imagepath" name="imagepath"  aria-describedby="imagepath" value="{{$movie->imagepath}}" required>
            
             </div>
