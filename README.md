@@ -15,6 +15,28 @@ PHP, Laravel, MySQL, BootStrap, HTML, CSS
 - Public Views: Includes login and registration pages, a welcome page showcasing all songs, and a page for viewing individual song and a movie by its ID .
 - Admin Views: Features a dashboard, along with functionalities for managing  songs (create, edit, view, and list) and movies (create, edit, and list).
 
+## Database Schema:
+
+ ### Songs Table
+ - songId- int
+ - songName:varchar
+ - singer:varchar
+ - songGenre:varchar
+ - userRating:varchar
+ - movie_id:int
+ - releaseDate:date
+ - imagePath:varchar
+ - videoId:varchar
+### Movies Table: 
+- id:int
+- movieName: varchar
+- year: varchar
+- genre:varchar
+- overview: varchar
+- director:varchar
+- cast: varchar
+- imagepath: varchar
+
 ## Screenshots Of the application
 ![Screenshot 2024-08-18 125707](https://github.com/user-attachments/assets/5e5d2df2-1fbc-497e-aa19-0db231639f2e)
 
